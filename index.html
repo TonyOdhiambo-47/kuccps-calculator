@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <meta
+      name="description"
+      content="Estimate your KUCCPS weighted cluster points. Enter your KCSE grades, see which courses you're competitive for."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>KUCCPS Calculator. Know your cluster points.</title>
+  </head>
+  <body>
+    <header class="hdr">
+      <a class="mark" href="https://mwendo.co">mwendo.</a>
+      <div class="tool">kuccps calculator</div>
+      <a class="gh" href="https://github.com/TonyOdhiambo-47/kuccps-calculator" target="_blank" rel="noopener">github</a>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-stamp">before results day</div>
+        <h1>
+          Know your <em>cluster points</em>. Before you have to decide.
+        </h1>
+        <p class="hero-sub">
+          Enter the KCSE grades you expect (or already got). The calculator uses the standard
+          KUCCPS weighted cluster-points formula and tells you which degree programmes you are
+          competitive for, given 2023 placement cutoffs.
+        </p>
+      </section>
+
+      <div class="summary" id="summary"></div>
+
+      <section class="entry">
+        <div class="panel-head">
+          <h2>your KCSE grades</h2>
+          <div class="right">
+            <button class="btn" id="btn-reset">reset</button>
+          </div>
+        </div>
+        <div id="subject-grid" class="subject-grid"></div>
+      </section>
+
+      <section class="programmes">
+        <div class="panel-head">
+          <h2>programmes</h2>
+          <div class="right">
+            <input id="filter" type="search" placeholder="filter by name, university, or cluster" aria-label="Filter programmes" />
+          </div>
+        </div>
+        <div id="programme-list" class="programme-list"></div>
+      </section>
+
+      <section class="disclaimer">
+        <strong>This is an estimate.</strong> KUCCPS does not publish the exact cluster-point
+        formula. This calculator uses the commonly-circulated approximation
+        <code>C = sqrt((r/R) * (t/T)) * 48</code>. The official value uses confidential
+        Performance Indices computed by KNEC and may differ by a point or two. The 2023 cutoffs
+        below come directly from the KUCCPS
+        <a href="https://statics.kuccps.net/uploads/globalFiles/DEGREE_CUTOFFS_04-06-2024.pdf">2024/2025 Degree Programme Cutoffs</a>
+        PDF. Always verify with
+        <a href="https://kuccps.ac.ke">kuccps.ac.ke</a> before making decisions.
+      </section>
+    </main>
+
+    <footer class="ftr">
+      <span>built by <a href="https://mwendo.co">mwendo</a>. MIT licensed.</span>
+      <a href="https://github.com/TonyOdhiambo-47/kuccps-calculator">contribute on github</a>
+    </footer>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
