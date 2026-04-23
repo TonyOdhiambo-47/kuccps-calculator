@@ -68,12 +68,13 @@ export function scoreProgramme(programme: Programme, grades: GradeMap): Programm
 
   const raw = usedSubjects.reduce((s, x) => s + x.points, 0);
   const aggregate = best7Aggregate(grades);
-  const clusterPoints = complete && aggregate > 0
+  const hasSeven = gradedSubjectCount(grades) >= 7;
+  const clusterPoints = complete && hasSeven
     ? Math.sqrt((raw / 48) * (aggregate / 84)) * 48
     : 0;
 
   let competitiveness: ProgrammeScore["competitiveness"];
-  if (!complete) {
+  if (!complete || !hasSeven) {
     competitiveness = "n/a";
   } else if (clusterPoints >= programme.cutoff2023) {
     competitiveness = "competitive";
@@ -112,5 +113,9 @@ export function meanGrade(aggregate: number): { letter: string; points: number }
 }
 
 export function gradeCount(grades: GradeMap): number {
+  return Object.values(grades).filter((g) => g && GRADE_POINTS[g] > 0).length;
+}
+
+function gradedSubjectCount(grades: GradeMap): number {
   return Object.values(grades).filter((g) => g && GRADE_POINTS[g] > 0).length;
 }

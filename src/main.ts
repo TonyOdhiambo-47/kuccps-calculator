@@ -63,17 +63,18 @@ function renderGrid() {
     }
     subjectGridEl.appendChild(col);
   }
-  subjectGridEl.addEventListener("change", (e) => {
-    const tgt = e.target as HTMLSelectElement;
-    if (!tgt.dataset.id) return;
-    grades[tgt.dataset.id] = tgt.value;
-    if (tgt.value) tgt.setAttribute("data-graded", "");
-    else tgt.removeAttribute("data-graded");
-    persistGrades();
-    renderSummary();
-    renderProgrammes();
-  });
 }
+
+subjectGridEl.addEventListener("change", (e) => {
+  const tgt = e.target as HTMLSelectElement;
+  if (!tgt.dataset.id) return;
+  grades[tgt.dataset.id] = tgt.value;
+  if (tgt.value) tgt.setAttribute("data-graded", "");
+  else tgt.removeAttribute("data-graded");
+  persistGrades();
+  renderSummary();
+  renderProgrammes();
+});
 
 function renderSummary() {
   const n = gradeCount(grades);
